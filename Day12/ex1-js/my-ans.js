@@ -19,5 +19,7 @@ Calculator.prototype.log = function(){
                 )
 }
 
-var c1 = new Calculator(1,1).log();
-var c2 = new Calculator(2,3).log();
+var c1 = new Calculator(1,1);
+setTimeout(function(){c1.log.call(c1)}, 2000);
+var c2 = new Calculator(2,3);
+c2.log();
