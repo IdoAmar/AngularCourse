@@ -1,0 +1,22 @@
+<div>
+    input 1
+    <input #Input1 (input)="setNumber1(Input1.value)" type="number">
+</div>
+<div>
+    input 2
+    <input #Input2 (input)="setNumber2(Input2.value)" type="number">
+</div>
+<div>
+    <button (click)="assignResults()">Go</button>
+</div>
+<div *ngIf= "show === true">    
+    <p>
+        {{savedNumber1}} + {{savedNumber2}} = {{addRes}}
+    </p>
+    <p>
+        {{savedNumber1}} - {{savedNumber2}} = {{subRes}}
+    </p>
+    <p>
+        {{savedNumber1}} * {{savedNumber2}} = {{mulRes}}
+    </p>
+</div>
