@@ -1,0 +1,5 @@
+<h2>Previous answers</h2>
+<div *ngFor="let item of questionsHistory;index as i" 
+     [ngClass] = "questionsHistory[i].correctAnswer === questionsHistory[i].userAnswer ? 'right' : 'wrong'">
+    <h3>{{i+1}}.{{questionsHistory[i].caption}}</h3>
+</div>
