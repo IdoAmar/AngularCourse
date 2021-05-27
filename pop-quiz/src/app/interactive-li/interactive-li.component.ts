@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input, HostListener} from '@angular/core';
 @Component({
   selector: 'app-interactive-li',
   templateUrl: './interactive-li.component.html',
@@ -12,7 +11,12 @@ export class InteractiveLiComponent implements OnInit {
   ngOnInit(): void {
   }
   onMouseOver(){
+    if(this.isMouseDown){
+      this.isHovered = false;
+    }
+    else{
     this.isHovered = true;
+    }
   }
   onMouseOut(){
     this.isHovered = false;
@@ -20,7 +24,10 @@ export class InteractiveLiComponent implements OnInit {
   onMouseDown(){
     this.isMouseDown = true;
   }
+
+  @HostListener('document:mouseup',['$event'])
   onMouseUp(){
     this.isMouseDown = false;
   }
+  
 }
