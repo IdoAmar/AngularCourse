@@ -1,34 +1,6 @@
 import { Component } from '@angular/core';
 import { Question } from './models/question';
-
-const questionsArray: Question[] = [
-  {
-    caption: 'What is ido\'s favorite animal?',
-    answers: ["Dog", "Snake", "Hamster", "Panda"],
-    correctAnswer: 1,
-    userAnswer: 0,
-  },
-  {
-    caption: 'What is ido\'s favorite dog breed?',
-    answers: ["Huski", "Corgi", "Golden retriever", "Gernan Shepard"],
-    correctAnswer: 2,
-    userAnswer: 0,
-  },
-  {
-    caption: 'What is ido\'s favorite culinary culture?',
-    answers: ["Indie", "Korean", "Middle Eastern", "Japanese"],
-    correctAnswer: 4,
-    userAnswer: 0,
-  },
-  {
-    caption: 'What is ido\'s favorite colour?',
-    answers: ["Yellow", "Purple", "Red", "Blue"],
-    correctAnswer: 2,
-    userAnswer: 0,
-  }
-]
-
-
+import { questionsArray } from './models/questions-array';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,20 +8,28 @@ const questionsArray: Question[] = [
 })
 export class AppComponent {
 
-  title: string = 'Pop Quiz';
-  quizOverText: string = "Quiz is over!";
-  currentQuestionIndex: number = 0;
-  questionsHistory: Question[] = [];
-  testDone: boolean = false;
+  title: string;
+  quizOverText: string;
+  currentQuestionIndex: number;
+  questionsHistory: Question[];
+  testDone: boolean;
 
-  public get score(): number{
+  constructor() {
+    this.title = 'Pop Quiz';
+    this.quizOverText = 'Quiz is over!';
+    this.currentQuestionIndex = 0;
+    this.questionsHistory = [];
+    this.testDone = false;
+  }
+
+  public get score(): number {
     let counter = 0;
     for (const item of this.questionsHistory) {
-      if(item.correctAnswer == item.userAnswer){
+      if (item.correctAnswer == item.userAnswer) {
         counter++;
       }
     }
-    return counter/this.questionsHistory.length * 100;
+    return counter / this.questionsHistory.length * 100;
   }
   public get currentQuestion(): Question {
     return questionsArray[this.currentQuestionIndex];
@@ -60,18 +40,19 @@ export class AppComponent {
   }
 
   AnswerSubmitted(answerIndex: number): void {
-    if (this.currentQuestionIndex <= questionsArray.length -1) {
-      console.log(answerIndex);
+    if (!this.testDone) {
       questionsArray[this.currentQuestionIndex].userAnswer = Number(answerIndex + 1);
       this.questionsHistory.push(questionsArray[this.currentQuestionIndex]);
       this.currentQuestionIndex++;
-      if(this.currentQuestionIndex === questionsArray.length){
+      if (questionsArray[this.currentQuestionIndex] === undefined) {
         this.testDone = true;
       }
     }
   }
-
-
-
 }
+
+
+
+
+
 

@@ -1,8 +1,9 @@
 li {
   list-style: none;
-  margin: 3px;
+  margin: 15px;
   padding: 6px;
-  border: 1px solid rgb(165, 165, 165);
+  border: 2px solid rgb(107, 107, 107);
+  cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -12,11 +13,11 @@ li {
 }
 
 .hovered {
-  border: 1px solid black;
+  border: 2px solid black;
   color: black
 }
 
 .selected {
-  border: 1px solid rgb(119, 69, 153);
+  border: 2px solid rgb(158, 93, 202);
 
 }

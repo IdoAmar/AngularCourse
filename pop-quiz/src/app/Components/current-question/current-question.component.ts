@@ -1,6 +1,6 @@
 import { Component, OnInit , Input, Output, EventEmitter} from '@angular/core';
 import { EmptyError } from 'rxjs';
-import { Question } from '../models/question';
+import { Question } from '../../models/question';
 
 @Component({
   selector: 'app-current-question',
