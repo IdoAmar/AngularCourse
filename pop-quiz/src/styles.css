@@ -12,6 +12,8 @@ div{
     display: grid;
 }
 *{
+
+    max-height: 100vh;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
