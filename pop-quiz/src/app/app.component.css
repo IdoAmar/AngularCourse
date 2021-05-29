@@ -7,7 +7,7 @@
 
 .titleContainer{
     grid-area: 1 / 1 / 2 / -1;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid lightgray;
     border-radius: 0px;
     padding-bottom: 5px;
     position:relative;
@@ -30,7 +30,8 @@
 
 .summaryContainer{
     grid-area : 2 / 2 / -1 / -1;
-    border-left: 1px solid white;
+    border-left: 1px solid lightgray;
+    box-shadow: 0px 8px 15px -1px gray;
     border-radius: 0px;
     
 }
@@ -38,7 +39,8 @@
     display: inline-block;
 }
 .resultDisplay{
-    border: 1px solid rgb(116, 116, 116);
+    border: 1px solid rgba(128, 128, 128, 0.7);
+    box-shadow: 0px 0px 10px 1px gray;
     padding: 5px;
 }
 h2,h1{

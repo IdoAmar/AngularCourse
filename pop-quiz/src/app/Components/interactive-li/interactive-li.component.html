@@ -1,6 +1,5 @@
-<li (mouseover) = "onMouseOver()" (mouseout) = "onMouseOut()"
+<li #listItem (mouseover) = "onMouseOver()" (mouseout) = "onMouseOut()"
     [ngClass] = "{'hovered' :(isHovered === true && isMouseDown !== true) , 'selected' : isMouseDown === true}"
-    (mousedown) = "onMouseDown()"
-    (mouseout) = "onMouseOut()">
+    (mousedown) = "onMouseDown()">
     <ng-content ></ng-content>
 </li>
