@@ -15,8 +15,8 @@ export class InteractiveLiComponent implements OnInit, AfterViewInit {
 
   readonly intervalTime: number = 6;
   readonly maxBlurRadius: number = 10;
-  readonly clickedBlurRadius: number = 6;
-  
+  readonly clickedBlurRadius: number = 4;
+
   constructor() {
   }
   ngAfterViewInit(): void {
@@ -32,33 +32,18 @@ export class InteractiveLiComponent implements OnInit, AfterViewInit {
     }
     else {
       this.isHovered = true;
-      let interval = setInterval(() => {
-        if (this.currentElement !== undefined) {
-          this.currentElement.style.boxShadow = "0px 0px " + this.blurRadius + "px " + "1px " + "gray"
-          this.blurRadius++
-        }
-        if (this.blurRadius > this.maxBlurRadius || !this.isHovered || this.isMouseDown) {
-          clearInterval(interval);
-        }
-      }, this.intervalTime)
+      this.animateHoverFadeIn();
     }
   }
+
+
   onMouseOut() {
     this.isHovered = false;
-    let interval = setInterval(() => {
-      if (!this.isMouseDown) {
-        if (this.currentElement !== undefined) {
-          this.currentElement.style.boxShadow = "0px 0px " + this.blurRadius + "px " + "1px " + "gray";
-          this.blurRadius--;
-
-          if (this.blurRadius < 0 || this.isHovered || this.isMouseDown) {
-            this.currentElement.style.boxShadow = "";
-            clearInterval(interval);
-          }
-        }
-      }
-    }, this.intervalTime)
+    this.animateHoverFadeOut();
   }
+
+
+
   onMouseDown() {
     let interval = setInterval(() => {
       if (this.currentElement !== undefined) {
@@ -73,7 +58,7 @@ export class InteractiveLiComponent implements OnInit, AfterViewInit {
           clearInterval(interval);
         }
       }
-    }, this.intervalTime );
+    }, this.intervalTime);
     this.isMouseDown = true;
 
   }
@@ -81,6 +66,54 @@ export class InteractiveLiComponent implements OnInit, AfterViewInit {
   @HostListener('document:mouseup', ['$event'])
   onMouseUp() {
     this.isMouseDown = false;
+  }
+
+
+  animateHoverFadeIn(): void {
+    if (this.currentElement !== undefined && this.blurRadius < this.maxBlurRadius &&
+      this.isHovered && !this.isMouseDown) {
+
+      this.currentElement.style.boxShadow = "0px 0px " + this.blurRadius + "px " + "1px " + "gray"
+      this.blurRadius++
+      requestAnimationFrame(this.animateHoverFadeIn.bind(this));
+    }
+    else {
+      return;
+    }
+  }
+
+
+  animateHoverFadeOut() : void {
+
+    if (this.currentElement !== undefined && !this.isMouseDown && this.blurRadius > 0 &&
+      !this.isHovered) {
+
+      this.currentElement.style.boxShadow = "0px 0px " + this.blurRadius + "px " + "1px " + "gray";
+      this.blurRadius--;
+      requestAnimationFrame(this.animateHoverFadeOut.bind(this));
+    }
+    else {
+      if (this.currentElement !== undefined) {
+        this.currentElement.style.boxShadow = "";
+      }
+      return;
+    }
+  }
+
+  animateButtonDown() : void {
+
+    if (this.currentElement !== undefined && this.blurRadius !== this.clickedBlurRadius && this.isMouseDown) {
+      this.currentElement.style.boxShadow = "0px 0px " + this.blurRadius + "px " + "1px " + "gray";
+      if (this.blurRadius < this.clickedBlurRadius) {
+        this.blurRadius++;
+      }
+      else {
+        this.blurRadius--;
+      }
+    }
+    else{
+      return;
+    }  
   }
 
 }
