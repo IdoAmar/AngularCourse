@@ -1,0 +1,9 @@
+<div class = "currentQuestionDiv">
+    <h2>{{currentQuestion.caption}}</h2>
+    <ul>
+        <app-interactive-li *ngFor="let item of currentQuestion.answers; index as i"
+         (click)="onUserAnswerChosen(i)">
+            {{i + 1}}. {{item}}
+        </app-interactive-li>
+    </ul>
+</div>

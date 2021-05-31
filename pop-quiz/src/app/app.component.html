@@ -1,0 +1,23 @@
+<div class="titleContainer">
+  <h1 class="title"> {{title}}</h1>
+</div>
+
+<div class="mainContainer">
+  <app-current-question *ngIf="testDone === false; else elseBlock" (userAnswerChosenEvent)="AnswerSubmitted($event)"
+    [currentQuestion]="currentQuestion">
+  </app-current-question>
+  <ng-template class = "displayContainer" #elseBlock>
+    <div class = "displayContainer">
+      <div class="displayContainer resultDisplay">
+      <h1>{{quizOverText}}</h1>
+      <h2>Your score is: {{score}}</h2>
+    </div>
+    </div>
+  </ng-template>
+
+</div>
+
+<div class="summaryContainer">
+  <app-questions-history [questionsHistory]="questionsHistory">
+  </app-questions-history>
+</div>

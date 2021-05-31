@@ -1,0 +1,38 @@
+div{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+h2{
+    text-align: center;
+    justify-self: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+    border-radius: 0px;
+}
+h3 {
+    padding: 3px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+p{
+    padding-left : 5px;
+}
+
+.wrong{
+    border: 1px solid rgba(255, 160, 122, 0.8);
+    box-shadow: 0px 0px 8px 2px lightsalmon;
+}
+.right{
+    border: 1px solid rgba(144, 238, 144, 0.9);
+    box-shadow: 0px 0px 8px 2px lightgreen;
+
+}
