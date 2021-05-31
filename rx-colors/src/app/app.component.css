@@ -1,0 +1,9 @@
+:host{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows: max-content 1fr 3fr;
+}
+.mainHeader{
+    grid-area: 1/1/2/-1;
+    padding-bottom: 10px;
+}
