@@ -4,11 +4,19 @@
 
 
 <app-user-input>
-
 </app-user-input>
 
 <app-display-color>
-
 </app-display-color>
 
-<button> Random Color </button>
+
+<button class="Randomizer" (click)="onRandomizePress()"> Random Color </button>
+<div class="msgContainer" *ngIf="(combinedCondition$ | async) as condition" >
+    <p *ngIf="condition === 'Won'" class="successMessage">
+        Success!!
+    </p>
+
+    <p *ngIf="condition === 'NotStarted'">
+        Press randomize to start the game!
+    </p>
+</div>

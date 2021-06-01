@@ -2,6 +2,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Color } from '../models/color-type';
 
 @Injectable({
     providedIn: 'root'
@@ -16,9 +17,9 @@ export class Game {
     private g$ : BehaviorSubject<number> = new BehaviorSubject(this.g);
     private b$ : BehaviorSubject<number> = new BehaviorSubject(this.b);
 
-    private randomRgbSet : [number,number,number] = [0,0,0];
+    private randomRgbSet : Color = [0,0,0];
 
-    private randomRgbSet$ : BehaviorSubject<[number,number,number]> = new BehaviorSubject(this.randomRgbSet);
+    private randomRgbSet$ : BehaviorSubject<Color> = new BehaviorSubject(this.randomRgbSet);
 
 
     constructor() {
@@ -51,7 +52,7 @@ export class Game {
         this.b$.next(this.b);
     }
 
-    GetComputerColor(): Observable<[number, number, number]> {
+    GetComputerColor(): Observable<Color> {
         return this.randomRgbSet$.asObservable();
     }
 

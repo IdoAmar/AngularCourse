@@ -1,0 +1,1 @@
+export type  Color = [Number,Number,Number]

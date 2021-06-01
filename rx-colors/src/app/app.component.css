@@ -1,9 +1,31 @@
 :host{
     display: grid;
-    grid-template-columns:1fr 1fr 1fr;
-    grid-template-rows: max-content 1fr 3fr;
+    grid-template-columns:1fr 4fr 1fr;
+    grid-template-rows: max-content 2fr 1fr 3fr;
+    padding: 10px;
 }
 .mainHeader{
     grid-area: 1/1/2/-1;
     padding-bottom: 10px;
+    text-align: center;
+}
+.Randomizer{
+    font-size: 24px;
+    margin: 10px;
+}
+
+.msgContainer{
+    grid-area: 3/1/4/-1;
+
+}
+
+p{
+    text-align: center;
+    font-size: 64px;
+
+}
+
+.successMessage{
+    color:rgb(101, 228, 101);
+    
 }

@@ -11,7 +11,7 @@ import { Game } from '../../services/Game.service';
 export class DisplayColorComponent implements OnInit {
 
   userColor$!: Observable<string>;
-
+  randomColor$!: Observable<string>;
   constructor(public game: Game) { }
 
   ngOnInit(): void {
@@ -19,7 +19,11 @@ export class DisplayColorComponent implements OnInit {
       [this.game.GetRed(),
        this.game.GetGreen(),
        this.game.GetBlue()]).pipe(
-                                  map(o => `rgb(${o[0]},${o[1]},${o[2]})`));
+                                  map(t => `rgb(${t[0]},${t[1]},${t[2]})`));
+
+    this.randomColor$ = this.game
+                                 .GetComputerColor()
+                                 .pipe(map( t => `rgb(${t[0]},${t[1]},${t[2]})`))                               
       
   }
 }
