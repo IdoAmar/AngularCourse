@@ -1,0 +1,7 @@
+:host{
+    align-self: flex-start;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows:auto auto;
+}

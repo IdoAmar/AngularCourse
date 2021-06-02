@@ -1,0 +1,10 @@
+    <input #textBox type="text" [textContent]>
+    <button (click)="onSearchInit(textBox.value)">
+        Search
+    </button>
+    <select #selector (change)="onSelectionChanged(selector.value)" >
+        <option hidden disabled selected value> Select joke type </option>
+        <option *ngFor="let item of jokeTypes" [value]="item">
+            {{item}}
+        </option>
+    </select>

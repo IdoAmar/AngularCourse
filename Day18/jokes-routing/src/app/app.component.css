@@ -1,0 +1,16 @@
+:host{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+}
+.titleBar{
+    grid-area:1/1/2/-1;
+    text-align: center;
+}
+.routerDiv{
+    display: grid;
+    position: relative;
+    grid-area: 2/1/-1/-1;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+}

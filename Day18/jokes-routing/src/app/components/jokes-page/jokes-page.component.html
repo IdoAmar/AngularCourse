@@ -1,0 +1,29 @@
+<div class="back">
+        <button *ngIf="(previousExist$|async) === true; else backSeperator" (click)="onPreviousClicked()">
+                < </button>
+                        <ng-template #backSeperator>
+                                <div>
+
+                                </div>
+                        </ng-template>
+</div>
+<div class="scrollViewer">
+        <div class="scrollContent">
+                <div class="divClass" *ngIf="(currentJoke$ | async) as currentJoke">
+                        <div class="jokeHeader">
+                                <p class="id">Joke Number - {{currentJoke.id}}</p>
+                                <p class="type">Type - {{currentJoke.type}}</p>
+                        </div>
+                        <p class="setup">{{currentJoke.setup}}</p>
+                        <button (click)="onPunchLineClicked()">Show Punchline</button>
+                        <p *ngIf="(isHidden$ | async) === true" class="punchline">{{currentJoke.punchline}}</p>
+                </div>
+        </div>
+</div>
+<div class="foward">
+        <button *ngIf="(nextJokeExist$|async) === true; else frontSeperator" (click)="onNextClicked()">
+                >
+        </button>
+        <ng-template #frontSeperator></ng-template>
+</div>
+<button class="newSearch" (click)="onNewSearchClicked()">New Search</button>

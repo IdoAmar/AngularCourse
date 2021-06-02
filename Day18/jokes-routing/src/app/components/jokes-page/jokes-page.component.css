@@ -1,0 +1,47 @@
+:host{
+    display: grid;
+    grid-template-columns: 45px 1fr 45px;
+    grid-template-rows: 1fr auto;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+p{
+    font-size: 32px;
+}
+button{
+    padding: 5px;
+    margin:10px;
+    align-self: center;
+}
+.newSearch{
+    grid-column: 1/-1;
+    justify-self: center;
+}
+.scrollViewer{
+    position:relative;
+}
+.scrollContent{
+    overflow-y:auto;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.back , .foward{
+    display: grid;
+}
+.jokeHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.type{
+    justify-self:flex-end;
+}
+.setup{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+
