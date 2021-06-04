@@ -1,8 +1,8 @@
 <div>
     <h2>Previous answers</h2>
 </div>
-<div *ngFor="let item of questionsHistory;index as i"
-    [ngClass]="questionsHistory[i].correctAnswer === questionsHistory[i].userAnswer ? 'right' : 'wrong'">
-    <h3>{{i+1}}.{{questionsHistory[i].caption}}</h3>
-    <p>Your answer: {{questionsHistory[i].answers[questionsHistory[i].userAnswer -1]}}</p>
+<div *ngFor="let item of (questionsHistory$ | async);index as i"
+    [ngClass]="item.correctAnswer === item.userAnswer ? 'right' : 'wrong'">
+    <h3>{{i+1}}.{{item.caption}}</h3>
+    <p>Your answer: {{item.answers[item.userAnswer -1]}}</p>
 </div>

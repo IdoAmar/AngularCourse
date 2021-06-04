@@ -1,54 +1,36 @@
-import { Component } from '@angular/core';
-import { Question } from './models/question';
-import { questionsArray } from './models/questions-array';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { QuestionsService } from './Services/questions.service';
+import { TestService } from './Services/test.service';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 
-  title: string;
-  quizOverText: string;
-  currentQuestionIndex: number;
-  questionsHistory: Question[];
-  testDone: boolean;
+  title: string = 'Pop Quiz';
+  quizOverText: string = 'Quiz is over!';
 
-  constructor() {
-    this.title = 'Pop Quiz';
-    this.quizOverText = 'Quiz is over!';
-    this.currentQuestionIndex = 0;
-    this.questionsHistory = [];
-    this.testDone = false;
+  constructor(
+    private questionsService : QuestionsService,
+    private testService : TestService
+    ) {}
+
+  public get isTestDone$() : Observable<boolean>{
+    return this.testService.getIsTestDone();
   }
 
-  public get score(): number {
-    let counter = 0;
-    for (const item of this.questionsHistory) {
-      if (item.correctAnswer == item.userAnswer) {
-        counter++;
-      }
-    }
-    return counter / this.questionsHistory.length * 100;
-  }
-  public get currentQuestion(): Question {
-    return questionsArray[this.currentQuestionIndex];
+  public get score$(): Observable<number>{
+    return this.testService.getIsTestDone().pipe(
+      map( b => this.testService.getScore())
+      );
   }
 
-  AddToQuestionHistory(question: Question) {
-    this.questionsHistory.push(question);
-  }
 
-  AnswerSubmitted(answerIndex: number): void {
-    if (!this.testDone) {
-      questionsArray[this.currentQuestionIndex].userAnswer = Number(answerIndex + 1);
-      this.questionsHistory.push(questionsArray[this.currentQuestionIndex]);
-      this.currentQuestionIndex++;
-      if (questionsArray[this.currentQuestionIndex] === undefined) {
-        this.testDone = true;
-      }
-    }
-  }
+
 }
 
 
