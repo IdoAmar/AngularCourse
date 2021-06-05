@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" (ngSubmit)="saveData()" *ngIf="formGroup">
+    <div>
+        <label>
+            Caption:
+        </label>
+        <input type="text" formControlName="caption">
+    </div>
+    <div>
+        <label>
+            Description:
+        </label>
+        <input type="text" formControlName="description">
+    </div>
+    <div>
+        <label>
+            Poster:
+        </label>
+        <input type="text" formControlName="poster">
+    </div>
+    <div>
+        <button [disabled]="!formGroup.valid"> Save </button>
+    </div>
+</form>

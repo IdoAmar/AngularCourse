@@ -1,0 +1,8 @@
+<button *ngIf="hasPrev$ | async" (click)="gotoPrev()" ><</button>
+<div *ngIf="(movie$ | async) as movie">
+    <h1>{{movie.caption}}</h1>
+    <p>{{movie.description}}</p>
+    <img [src]="movie.poster">
+    <button (click)="gotoEdit()">Edit</button>
+</div>
+<button *ngIf="hasNext$ | async" (click)="gotoNext()">></button>
