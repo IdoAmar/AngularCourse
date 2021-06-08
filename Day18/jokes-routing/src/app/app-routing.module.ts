@@ -5,6 +5,7 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 
 const routes: Routes = [
   {path: 'jokes/:keyword/:index/:type',component: JokesPageComponent},
+  {path:'jokes/:keyword/:index',component:JokesPageComponent},
   {path: 'search', component: SearchPageComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'}
 ];
