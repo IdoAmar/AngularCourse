@@ -53,14 +53,26 @@ export class JokesPageComponent implements OnInit {
 
   onPreviousClicked() {
     let p = this.route.snapshot.params;
+    console.log(p);
+    
     this.isHidden$.next(false);
-    this.router.navigate(["jokes",p['keyword'],Number(p['index']) - 1, p['type']]);
+    if(p[3]){
+        this.router.navigate(["jokes",p['keyword'],Number(p['index']) - 1, p['type']]);
+    }
+    else{
+        this.router.navigate(["jokes",p['keyword'],Number(p['index']) - 1]);
+    }
   }
 
   onNextClicked(){
     let p = this.route.snapshot.params;
     this.isHidden$.next(false);
-    this.router.navigate(["jokes",p['keyword'],Number(p['index']) + 1, p['type']]);
+    if(p[3]){
+        this.router.navigate(["jokes",p['keyword'],Number(p['index']) + 1, p['type']]);
+    }
+    else{
+        this.router.navigate(["jokes",p['keyword'],Number(p['index']) + 1]);
+    }
   }
 
   onNewSearchClicked(){
